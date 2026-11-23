@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyShop - Responsive Navigation Bar</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      background: #0d1b3e;            /* dark navy */
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;  /* logo left, links right */
+      align-items: center;
+      padding: 14px 20px;
+    }
+
+    .logo { font-size: 20px; font-weight: bold; }
+
+    nav { display: flex; }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 14px;
+    }
+
+    nav a:hover { background: #1976d2; }   /* blue on hover */
+
+    .menu-btn {
+      display: none;                   /* hidden on wide screens */
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    main { padding: 20px; }
+
+    /* Narrow screens: hamburger shows, menu hides and stacks */
+    @media (max-width: 600px) {
+      header { flex-wrap: wrap; }
+
+      .menu-btn { display: block; }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      nav.open { display: flex; }
+
+      nav a { padding: 12px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">MyShop</div>
+    <button class="menu-btn" id="menuBtn">&#9776;</button>
+    <nav id="menu">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Welcome to MyShop</h1>
+    <p>Resize the browser window to see the menu change.</p>
+  </main>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+
+    menuBtn.addEventListener("click", function () {
+      menu.classList.toggle("open");
+    });
+  </script>
+
+</body>
+</html>

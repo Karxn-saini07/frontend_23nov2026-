@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card with Follow Button</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+      margin: 0;
+    }
+
+    .card {
+      width: 300px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      overflow: hidden;
+      padding-bottom: 24px;
+    }
+
+    .banner {
+      height: 110px;
+      background: linear-gradient(to right, #2979ff, #8e24aa);
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      background: #ffd600;
+      border: 4px solid #ffffff;
+      border-radius: 50%;
+      margin: -45px auto 0;           /* negative top margin: overlaps banner */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    h2 { margin: 12px 0 4px; }
+
+    .role { color: #888; margin: 0 0 14px; }
+
+    .skills {
+      list-style: none;
+      padding: 0 16px;
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .skills li {
+      background: #e8eaf6;
+      color: #333;
+      font-size: 13px;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .followers { margin: 0 0 16px; font-size: 15px; }
+
+    #followBtn {
+      background: #2979ff;
+      color: #ffffff;
+      border: 2px solid #2979ff;
+      border-radius: 25px;
+      padding: 10px 34px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #followBtn.following {
+      background: #ffffff;
+      color: #2979ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="banner"></div>
+    <div class="avatar">AK</div>
+
+    <h2>Arjun Kumar</h2>
+    <p class="role">Web Developer</p>
+
+    <ul class="skills">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Git</li>
+    </ul>
+
+    <p class="followers"><span id="count">120</span> followers</p>
+
+    <button id="followBtn">Follow</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById("followBtn");
+    const countEl = document.getElementById("count");
+    let count = 120;
+
+    btn.addEventListener("click", function () {
+      btn.classList.toggle("following");
+
+      if (btn.classList.contains("following")) {
+        btn.textContent = "Following";
+        count = 121;
+      } else {
+        btn.textContent = "Follow";
+        count = 120;
+      }
+      countEl.textContent = count;
+    });
+  </script>
+
+</body>
+</html>
